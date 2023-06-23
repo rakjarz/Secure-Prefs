@@ -127,7 +127,7 @@ artifacts {
 }
 
 publishing {
-//    repositories {
+    repositories {
 //        maven {
 //            name = "SecurePrefs"
 //            url = uri("https://maven.pkg.github.com/gesundheitscloud/Secure-Prefs")
@@ -136,7 +136,17 @@ publishing {
 //                password = project.findProperty("gpr.key")
 //            }
 //        }
-//    }
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/rakjarz/Secure-Prefs"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+
+
     publications {
         kotlinMultiplatform {
             artifactId = "common"
